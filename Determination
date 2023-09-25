@@ -1,0 +1,97 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int main(){
+	srand(time(NULL));
+	int a[13] ={0};
+	int i;
+	for(i = 1;i<=12;i++){
+		a[i] = 100; 
+	}
+	int errorNo = rand()%12+1;
+	int weight;
+	do{
+		weight = rand()%201;
+	}while(weight == 100);
+	a[errorNo] = weight;
+	
+	printf("NO = %d, weight = %d\n",errorNo,weight);
+	
+	
+	 
+	if(a[1]+a[2]+a[3]+a[4] == a[5]+a[6]+a[7]+a[8]){
+		if(a[1]+a[9]==a[10]+a[11]){
+			if(a[1]>a[12]){
+				printf("Fake is 12，lighter");
+			}else{
+				printf("fake is 12，heavier");
+			}
+		}else if(a[1]+a[9]>a[10]+a[11]){
+			if(a[10]==a[11]){
+				printf("fake is 9，heavier");
+			}else if(a[10]>a[11]){
+				printf("fake is 11，lighter");
+			}else{//a[10]<a[11]
+				printf("fake is 10, lighter");
+			}
+		}else{//a[1]+a[9]<a[10]+a[11]
+			if(a[10]==a[11]){
+				printf("fake is 9, lighter");
+			}else if(a[10]>a[11]){
+				printf("fake is 10, heavier");
+			}else{//a[10]<a[11]
+				printf("fake is 11, heavier");
+			}
+		}
+	}else if(a[1]+a[2]+a[3]+a[4] > a[5]+a[6]+a[7]+a[8]){
+		if(a[9]+a[10]+a[11]+a[1] == a[2]+a[3]+a[4]+a[5]){
+			//in 6,7,8 and lighter
+			if(a[6] == a[7]){
+				printf("fake is 8, lighter");
+			} else if(a[6] > a[7]){
+				printf("fake is 7, lighter");
+			} else{
+				printf("fake is 6, lighter");
+			}
+		} else if(a[9]+a[10]+a[11]+a[1] > a[2]+a[3]+a[4]+a[5]){
+			if(a[1] == a[2]){
+				printf("fake is 5, lighter");
+			}else{
+				printf("fake is 1, heavier");
+			}
+		}else{
+			if(a[2]==a[3]){
+				printf("fake is 4, heavier");
+			}else if(a[2]>a[3]){
+				printf("fake is 2, heavier");
+			}else{//a[2]<a[3]
+				printf("fake is 3, heavier");
+			}
+		}
+	}else{
+		if(a[9]+a[10]+a[11]+a[1] == a[2]+a[3]+a[4]+a[5]){
+			if(a[6] == a[7]){
+				printf("fake is 8, heavier");
+			} else if(a[6] > a[7]){
+				printf("fake is 6, heavier");
+			} else{
+				printf("fake is 7, heavier");
+			}
+		} else if(a[9]+a[10]+a[11]+a[1] > a[2]+a[3]+a[4]+a[5]){
+			if(a[2]==a[3]){
+				printf("fake is 4, lighter");
+			}else if(a[2]>a[3]){
+				printf("fake is 3, lighter");
+			}else{//a[2]<a[3]
+				printf("fake is 2, lighter");
+			}			
+		}else{
+			if(a[1] == a[2]){
+				printf("fake is 5, lighter");
+			}else{
+				printf("fake is 1, lighter");
+			}
+		}
+	}
+	return 0;
+}
